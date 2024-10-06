@@ -1,0 +1,187 @@
+git --version
+-> windows terminalde yazınca git versiyonunu gösterir
+
+
+git config --global --list 
+-> bütün repository'ler için geçerli olan configlere bakmayı sağlar
+
+
+git config --global user.email ahmetemirlevent@gmail.com
+-> emaili ayarlar
+
+
+code
+-> vscode path'e ayarlanmışsa onu açar
+
+
+git config --global core.editor "code --wait"
+-> default editörü code yapar sonra kapatmanı bekler
+
+
+git config --global core.autocrlf true
+-> satır sonlarını windowsta olduğum için \n\r yapar
+
+
+git config --help VEYA git config -h
+-> yardım sayfasını uzun halini veya kısa halini açar
+
+
+git init
+-> mevcut directory'de git'i başlatır.
+
+
+mkdir "/c/EMIRDATA/Muhendislik Calismalar/GIT/Tests"
+-> C:\EMIRDATA\Muhendislik Calismalar\GIT pathinde Tests isimli bir dosya oluşturur. "" içine alınmasının sebebi Muhendislik Calismalar klasörünün isminin içinde boşluk olmasıdır, böylelikle bütün path tek bir argüman olarak alınır. Eğer mkdir ve path arasına -p koysaydım olmayan Tests'den önce ismi geçip de olmayan klasörleri de oluştururdu, ama ben bunu çok sevmedim çünkü hata yapmaya daha yatkın. mkdir: make directory
+
+
+cd "/c/EMIRDATA/Muhendislik Calismalar/GIT/Tests"
+-> mevcut directory'yi C:\EMIRDATA\Muhendislik Calismalar\GIT\Tests olarak seçer. cd: change directory
+
+
+explorer "C:\EMIRDATA\Muhendislik Calismalar\GIT\Tests\.git"
+-> bu komut belirtilen path'deki klasörü açar. diğer komutlar gibi /c/... yerine C:\... olmasının sebebi windowsta dosya açmaya çalışmaktır.
+
+
+git status
+-> mevcut klasördeki dosyalar ve git işleyişi hakkında durum bilgisi verir
+
+
+git add test1.txt test2.txt
+-> commitlenecek olan dosyaları stage area'ya ekler. Birden fazla dosya olursa test1 ve test2 arasındaki gibi birer boşluk bırakılır. Bir uzantıya sahip bütün dosyaları almak için *.txt gibi kullanım yapılabilir. Eğer sadece parantezsiz (git add .) yazılırsa bütün directory'yi stage area'ya ekler.
+
+
+git commit
+-> parantezsiz (-m "mesaj") eklenmezse commit mesajlarını editlemek için default editörü açar. İlk satıra kısa açıklama, sonra 1 satır boşluk, sonra 3. satıra uzun açıklama yazılır. Açıklamalar bittikten sonra değişiklikler Ctrl+S gibi kaydedilir ve o gitin açmış olduğu sekme kapatılır. Eğer sadece parantezsiz (git commit -m "Initial commit.") yazılsaydı kısa bir mesaj ekleyerek hızlıca commit yapardı.
+
+
+git commit -a
+-> all the modified files anlamına gelir. Değişiklik yapılan bütün dosyaları commitler. -am yazılabilir hem -a hem de -m birleştirilmiş halidir.
+
+
+git rm --cached test2.txt
+-> stage area'dan test2.txt dosyasını çıkartır, ama directory'den silmez. Eğer --cached yazısı olmasaydı klasörden test2.txt dosyasını tamamen silerdi. Eğer fatal: hatası verirse cached'den sonra -r ekleyip düzeltilebilir.
+
+
+git ls-files
+-> sadece böyle olunca stage'de bulunan dosyaları gösterir. Bunun sonuna yeni komutlar eklenebilir:
+--others	: stage'de olmayan dosyaları gösterir.
+--stage 	: stage'de olan dosyalar hakkında bilgi verir.
+--m		: (modified) değiştirilmiş dosyaları gösterir.
+
+
+git mv test1.txt testA.txt
+-> test1.txt dosyasının ismini testA.txt olarak değiştirir. testA.c gibi uzantıyı da değiştirebilirdi.
+
+
+touch .gitignore
+-> git'in takip etmemesi için bir .gitignore dosyası oluşturur. ÖNEMLİ komutlardan bir tanesi. Touch komutu dosya oluşturur
+
+
+echo "any text here" >> testA.txt
+-> bu komut verilen texti bir dosyaya appendler yani en sonuna yeni satır olarak koyar. Eğer ismi verilen txt dosyası yoksa önce dosyayı oluşturur sonra appendler.
+
+
+git log
+-> şu ana kadarki yapılan değişikliklerin ayrıntılı listesini gösterir. her değişikliğin kendine özel hash numarası vardır. Sonuna --oneline eklenirse sadece commit mesajları gözükür.
+
+
+git checkout (hash parantezsiz)
+-> eski versiyona dönmeyi sağlar. git log'da gözüken hash numaraları ile istenilen versiyona dönüş sağlanır.
+
+
+clear
+-> konsol komutu. Konsolu sadece görüntü olarak temizlemeye yarar.
+
+
+git remote add origin git@github.com:ahmetemirlevent/ozel.git
+-> bilgisayardaki repository/folder/directory 'yi siteye bağlar.
+
+
+git branch -M main
+-> mevcut branch'in adını main yapar. -M de isim değiştirmek için kullanılan bir option'dur
+
+
+ssh-keygen -t <TÜR> -C "githubdaki email"
+-> ssh key oluşturur. Nerde dosya oluşturmasını istediğini sorar, passphrase sorar ama boş kabul eder, sonra key'i 2 şekilde kaydeder, biri normal diğer public. Public olan github ayarlar sayfasına koyulur.
+
+
+cat ~/.ssh/id_ed25519.pub
+-> konsol komutu, dosyanın içeriğini yazdırır.
+
+
+git checkout -b new-branch
+-> new-branch isimli yeni bir branche oluşturur ve ona geçer.
+
+
+git branch feature-branch
+-> feature-branch isimli bir branch oluşturur.
+
+
+git checkout feature-branch
+-> mevcut branch'tan feature-branch isimli branch'a geçer.
+
+
+git checkout -b feature-branch
+-> aynı anda hem feature-branch isimli yeni bir branch oluşturur, mevcut branch'tan o branch'a geçiş yapar.
+
+
+git branch
+-> şu anda hangi branch'ta olduğunu gösterir
+
+
+git merge feature-branch
+-> MEVCUT branch ile feature-branch isimli branch'ları birleştirir. Eğer merge conflict varsa manuel olarak dosyaları açıp conflictleri düzeltip ondan sonra stage ve commit yapılır.
+
+
+git rebase (-i veya --interactive)
+-> default editörde commit'lerin sıralamasını açar. pick/p ile kullanılacak commitler seçilir, reword/r ile mesajı değiştirilip kullanılacak commit'ler seçilir, drop/d ile silinecek commit'ler seçilir, ve default editör kaydedilip kapatılır. Böylelikle commit'ler düzenlenmiş olur.
+
+
+git rebase --continue
+-> eğer rebase yapılacak commit'lerdeki dosyalar arasında conflict olursa conflict'ler düzeltilir, düzeltilmiş dosyalar tekrar stage'lenir, ve bu komutla rebase işlemine devam edilir.
+
+
+git cherry-pick (parantezsiz commit hash'i #1) (parantezsiz commit hash'i #2)
+-> teker teker branch'ler arası commit'leri taşımaya yarar. Hangi hash önce girilmişse getirildiği branch'ten farklı olarak önce girilmiş olan o commit yeni branch'e önce girer.
+
+
+git push (remote_name) (branch_name)
+-> örnek git push origin main olursa, main isimli branch origin isimli remote'un main isimli branch'ına gönderilmiş olur.
+
+
+git push --all (remote_name)
+-> bütün branch'leri remote'a gönderir.
+
+
+git push -u origin main
+-> main isimli branch'ı origin isimli remote'un main isimli branch'ına gönderir, ve -u olduğundan upstream olarak ayarlar ve bundan sonra sadece git push yazarak main branch'ı origin'in main branchına göndermek mümkün olur.
+
+
+git reset
+-> stage area'daki bütün dosyaları unstage yapar.
+
+
+!.gitignore !folder1/ !folder1/**
+-> git ignore yaptığımız path'lerde bazı klasörleri ignore'lamamasını sağlar. Örneğin bütün dosyayı * ile ignorelayıp folder1 klasörünü ignore'lamaması için !folder1/ ve içindeki alt klasörleri ve dosyaları ignore'lamaması için !folder1/** yazılır. sadece !folder1/ işe yaramaz.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

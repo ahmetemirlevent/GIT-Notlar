@@ -1,0 +1,7 @@
+#ignore all
+*
+
+#except for
+
+!.gitignore
+!GIT Notlar.txt
